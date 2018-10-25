@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ForEach</title>
+</head>
+<body>
+
+    <script>
+        
+        const purchases = [
+            {quantity: 2, amount: 200},
+            {quantity: 4, amount: 300},
+            {quantity: 7, amount: 500},
+            {quantity: 10, amount: 100},
+        ];
+
+        let total = 0;
+        
+        purchases.forEach(item => total += item.quantity * item.amount);
+
+        console.log(total);
+
+    </script>
+</body>
+</html>
