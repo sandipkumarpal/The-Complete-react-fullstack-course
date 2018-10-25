@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ForEach</title>
+    <style>
+        .product {
+            padding: 20px;
+            width: 250px;
+            margin: 10px;
+            border: solid 1px #d2d2d2;
+            box-sizing: border-box;
+            display: inline-block;
+        }
+        .product h1 {
+            margin:  0 0 10px;
+            color: #03A9F4;
+        }
+        .product span {
+            background-color: #ff0099;
+            padding: 10px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="product">
+        <h1>Name</h1>
+        <strong>Price: $ xxxx </strong>
+        <span>On Sale !!</span>
+    </div>
+    <script>
+        
+        const products = [
+            {name:'Iphone',price:200},
+            {name:'Motorola',price:70},
+            {name:'Samsung',price:150},
+            {name:'Sony',price:98},
+            {name:'Windows pone',price:10}
+        ];
+
+        let template= '';
+
+        products.forEach(product => {
+            function discount() {
+                if(product.price < 100) {
+                    return `<span>On Sale !!</span>`;
+                } else {
+                    return '';
+                }
+            };
+            template += `<div class="product">
+                <h1>${product.name}</h1>
+                <strong>Price: $ ${product.price} </strong>
+                ${discount()}
+            </div>`;
+        });
+
+        document.body.insertAdjacentHTML("afterbegin", template);
+
+        
+
+    </script>
+</body>
+</html>
