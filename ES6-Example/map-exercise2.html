@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ForEach</title>
+    
+</head>
+<body>
+
+    <script>
+        const cars = [
+            {name:'Ford',price:200},
+            {name:'Nissan',price:400},
+            {name:'Nissan',price:600}
+        ];
+        function convertPrice( price ) {
+            return price * 17.25;
+        }
+        const price = cars.map(car => 
+            `The ${car.name} is ${convertPrice(car.price)} Ars`
+        );
+        
+        console.log(price);
+
+    </script>
+</body>
+</html>
