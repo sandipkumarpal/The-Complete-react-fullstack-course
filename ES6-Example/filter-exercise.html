@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ForEach</title>
+    
+</head>
+<body>
+
+    <script>
+        const channels = [
+            {name:'HBO',premium:true},
+            {name:'LIFE',premium:false},
+            {name:'Max',premium:true},
+            {name:'Cooking channel',premium:false},
+            {name:'WOBI',premium:false}
+        ];
+
+        const results = channels.filter(channel => channel.premium )
+        console.log(results);
+
+    </script>
+</body>
+</html>
