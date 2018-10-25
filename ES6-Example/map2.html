@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ForEach</title>
+    
+</head>
+<body>
+    <select name="" id=""></select>
+    <script>
+        const users = [
+            { user: "Sandip Pal", age: 32, eyes: 'Brown'},
+            { user: "Gopal Pal", age: 65, eyes: 'Blue'},
+            { user: "Rayel Pal", age: 23, eyes: 'Black'},
+            { user: "Jhilik Pal", age: 26, eyes: 'Gray'}
+        ];
+        const listOfUser = users.map(user => user.user);
+        console.log(listOfUser);
+        
+        listOfUser.forEach(name => {
+           const select = document.querySelector('select');
+           select.insertAdjacentHTML("afterbegin", `<option value="${name}">${name}</option>`);
+        });
+
+    </script>
+</body>
+</html>
