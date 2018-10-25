@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ForEach</title>
+    
+</head>
+<body>
+
+    <script>
+        const products = [
+            {name:'ipad',category: "Device", number: 20, price: 200},
+            {name:'Sony 3d',category: "TV", number: 3, price: 100},
+            {name:'E256',category: "Blender", number: 5, price: 500},
+            {name:'Super Version',category: "TV", number: 10, price: 600},
+            {name:'Samsung',category: "Blender", number: 8, price: 800},
+            {name:'Iphone 7',category: "Phones", number: 15, price: 1000}
+        ];
+
+        const results = products.filter(product => 
+                product.category === 'TV' && product.price > 100 
+                || 
+                product.category === 'Blender' && product.price > 500
+            );
+        console.log(results);
+
+    </script>
+</body>
+</html>
