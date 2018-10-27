@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Find</title>
+</head>
+<body>
+    
+    <script>
+        const users = [
+            {name: "Sandip", lastName: "Pal", grade: 11},
+            {name: "Gopal", lastName: "Pal", grade: 10},
+            {name: "Jhilik", lastName: "Pal", grade: 14},
+            {name: "Rayel", lastName: "Pal", grade: 13}
+        ];
+
+        const name = users.reduce((start, user) => {
+            start.push(user.name);
+            return start;
+        }, []);
+
+        console.log(name);
+
+    </script>
+</body>
+</html>
