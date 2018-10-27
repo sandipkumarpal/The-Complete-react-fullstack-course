@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Find</title>
+    
+</head>
+<body>
+    <label for="price">Price</label>
+    <select name="price" id="price">
+        <option value="1000">Less then 1000</option>
+        <option value="5000">Less then 5000</option>
+        <option value="10000">Less then 10000</option>
+    </select>
+
+    <label for="type">Type</label>
+    <select name="type" id="type">
+        <option value="Sport car">Sport Car</option>
+        <option value="Wagon">Wagon</option>
+        <option value="Urban">Urban</option>
+        <option value="pasenger">Pasenger</option>
+    </select>
+
+
+    <div class="search">
+        Search...
+    </div>
+    <script>
+        const cars = [
+            {brand:'ipad',price: 6000, available: 2, type: "Sport car"},
+            {brand:'Sony 3d',price: 9000, available: 4, type: "Wagon"},
+            {brand:'E256',price: 40000, available: 10, type: "Sport car"},
+            {brand:'Super Version',price: 4800, available: 9, type: "Urban"},
+            {brand:'Samsung',price: 3000, available: 5, type: "Pasenger"},
+            {brand:'Iphone 7',price: 12000, available: 0, type: "Sport car"}
+        ];
+
+        function getResults(price, type) {
+            return cars.find(car => 
+                car.price < price && 
+                car.available > 0 && 
+                car.type === type);
+        }
+
+        document.querySelector('.search').addEventListener('click',  () => {
+            let price = parseInt(document.querySelector('#price').value);
+            let type = document.querySelector('#type').value;
+
+            const results = getResults(price, type);
+
+            results ? 
+                console.log(`Found ${results.brand} for $ ${results.price}`) 
+                : 
+                console.log(`Sorry no car for you!`);
+        });
+
+    </script>
+</body>
+</html>
