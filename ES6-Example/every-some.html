@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Find</title>
+</head>
+<body>
+    
+    <script>
+        const students = [
+            {name: "Sandip Pal", grade: 11},
+            {name: "Gopal Pal", grade: 10},
+            {name: "Jhilik Pal", grade: 14},
+            {name: "Rayel Pal", grade: 13}            
+        ];
+        
+        let allStudentsPassedTheCourse = students.every(student => student.grade <= 10 );
+
+        // let allStudentsPassedTheCourse = false;
+
+        // for (let index = 0; index < students.length; index++) {
+        //     let student = students[index];
+        //     console.log(student);
+
+        //     if (student.grade < 10) {
+        //         allStudentsPassedTheCourse = false;
+        //         console.log('s');
+        //         break;
+        //     } else {
+        //         allStudentsPassedTheCourse = true;
+        //     }
+        // }
+
+        console.log(allStudentsPassedTheCourse);
+
+    </script>
+</body>
+</html>
