@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FatArrow Function</title>
+</head>
+<body>
+    
+    <script>
+        const cars = {
+            brands: ['Ford', 'Audi', 'BMW', 'Zent'],
+            category: 'Sport car',
+            message: function() {
+                return this.brands.map(brand => console.log(`${brand} is a ${this.category}`));
+            }
+        }
+        cars.message();
+    </script>
+</body>
+</html>
