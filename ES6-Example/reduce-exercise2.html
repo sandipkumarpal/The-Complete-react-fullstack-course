@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Find</title>
+</head>
+<body>
+    
+    <script>
+        const computers = [
+            {type:'Laptop',price:124, os:'Windows'},
+            {type:'Desk',price:124, os:'Mac'},
+            {type:'Desk',price:124, os:'Windows'},
+            {type:'Laptop',price:124, os:'Mac'},
+            {type:'Laptop',price:124, os:'Windows'},
+        ];
+
+        const osType = computers.reduce((computer, type) => {
+
+            return type.os === 'Mac' ? 
+                { windows: computer.windows, mac: computer.mac + 1 } 
+                : 
+                { windows: computer.windows + 1, mac: computer.mac };
+
+        }, { windows:0, mac:0 })
+
+        console.log(osType);
+
+    </script>
+</body>
+</html>
