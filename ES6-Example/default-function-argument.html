@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Default Function Argument</title>
+</head>
+<body>
+    
+    <script>
+        function randomBrand() {
+            const brands = ['Ford', 'Nissan', 'BMW'];
+            return brands[Math.floor(Math.random() * brands.length)];
+        }
+        function cars(brand = randomBrand()) {
+            console.log(`My brand is ${brand}`);
+        }
+
+        cars();
+    </script>
+</body>
+</html>
