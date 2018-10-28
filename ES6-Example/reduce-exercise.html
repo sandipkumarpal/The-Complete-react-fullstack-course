@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Find</title>
+</head>
+<body>
+    
+    <script>
+        const trips = [
+            {to:'Brazil',distance:1000},
+            {to:'Chine',distance: 2500},
+            {to:'India',distance: 3000}
+        ]
+
+        const totalDistance = trips.reduce((total, trip) => {
+            return total + trip.distance;
+        }, 0);
+
+        console.log(totalDistance);
+
+    </script>
+</body>
+</html>
