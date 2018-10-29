@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Classes</title>
+</head>
+<body>
+    
+    <script>
+        function Car() {};
+        var car = new Car();
+
+        Car.prototype.status = 'New';
+        Car.prototype.wheels = 4;
+        Car.prototype.avail = function() {
+            console.log('available');
+        }
+    
+        console.log(car);
+        const ford = new Car();
+        console.log(ford);
+
+        class CarClasses {
+            // constructor(option){
+            //     this.status = option.status;
+            //     this.wheels = option.wheels;
+            //     this.avail = option.avail;
+            // }
+            constructor({status, wheels, avail}){
+                this.status = status;
+                this.wheels = wheels;
+                this.avail = avail;
+            }
+        }
+
+        let carClass = new CarClasses({
+            status: 'New',
+            wheels: 4,
+            avail: () => { console.log('Available')}
+        });
+
+        console.log(carClass);
+
+    </script>
+</body>
+</html>
