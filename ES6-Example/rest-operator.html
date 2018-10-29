@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rest Operator</title>
+</head>
+<body>
+    
+    <script>
+        function restOperator(...abc) {
+            // console.log([arguments]);
+            // console.log(arguments[0]);
+            console.log(abc[1]);
+        }
+
+        restOperator('Value1', 'Value2', 'Value3');
+
+        function restOperator2(...args) {
+            console.log(`My name is ${args[0]}, i am ${args[1]} years Old, my eyes are ${args[2]}.`);
+        }
+
+        restOperator2('Sandip Pal', 43, 'Black');
+
+    </script>
+</body>
+</html>
