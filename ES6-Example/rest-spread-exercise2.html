@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rest and Spread</title>
+</head>
+<body>
+    
+    <script>
+        // function showItems(arg1,arg2,arg3){
+        //     var arr = [arg2,arg3].concat(arg1)
+        //     console.log(arr)
+        // }
+
+        function showItems(args1, ...args2) {
+            const arr = [...args1, ...args2];
+            console.log(arr);
+        }
+
+        showItems(["dogs","cats"],"turtles","sharks");
+    </script>
+</body>
+</html>
