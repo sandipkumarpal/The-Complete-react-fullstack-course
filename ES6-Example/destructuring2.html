@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Destructuring</title>
+</head>
+<body>
+    
+    <script>
+        const cars = [
+            'Camaro',
+            'Nova',
+            'A4'
+        ];
+        
+        // const [camaro, nova, a4] = cars;
+        // console.log(camaro, nova, a4);
+
+        const [cam, ...rest] = cars;
+
+        console.log(rest);
+
+    </script>
+</body>
+</html>
