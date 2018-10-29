@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Classes</title>
+</head>
+<body>
+    
+    <script>
+        class CarClasses {
+            constructor(){
+                this.status = 'New';
+                this.wheels = 4;
+                this.avail = () => { console.log('Available')}
+            }
+        }
+
+        let carClass = new CarClasses();
+
+        console.log(carClass);
+
+        class Ford extends CarClasses {
+            constructor() {
+                super();
+            }
+        }
+
+        const ford = new Ford();
+        ford.color = 'Red';
+
+        console.log(ford);
+
+    </script>
+</body>
+</html>
