@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise and Fetch</title>
+</head>
+<body>
+    
+    <script>
+        
+        const url = "https://jsonplaceholder.typicode.com/posts/";
+        
+        fetch(url, {
+            method: 'POST',  // GET
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify({title: 'Some Dum Title'}),
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.log('Getting Some: ', error));
+
+    </script>
+</body>
+</html>
