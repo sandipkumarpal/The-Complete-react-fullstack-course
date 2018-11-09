@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Posts(props) {
-    return (
-        <div>
-            <Link to="/posts/1">Posts 1</Link>
-            <Link to="/posts/2">Posts 2</Link>
-            <Link to="/posts/3">Posts 3</Link>
-        </div>
-    )
+    const ids =[
+        {id:1, name:'Posts 01'},
+        {id:2, name:'Posts 02'},
+        {id:3, name:'Posts 03'}
+    ];
+    const lists = ids.map(items => <Link key={items.id} to={`posts/${items.id}`}>{items.name}</Link>);
+    return ["Sandip", "Rayel"];
 }
 
 export default Posts;
