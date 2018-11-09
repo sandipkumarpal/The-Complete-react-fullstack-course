@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'react-router-dom/Link';
+import {Link, Redirect } from 'react-router-dom';
 
 function Profiles(props) {
     console.log(props);
@@ -8,6 +8,7 @@ function Profiles(props) {
             <Link to={{
                 pathname: `${props.match.url}/posts`
             }}>Go to Profiles posts</Link>
+            <Redirect to="/"/>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link} from 'react-router-dom';
+import { BrowserRouter, Route, Link, Switch} from 'react-router-dom';
 
 import Home from './components/Home';
 import Posts from './components/Posts';
@@ -19,10 +19,13 @@ class App extends Component {
                 pathname: "/profiles",
               }}>Profiles</Link>
             </header>
-            <Route path="/" exact component={Home} />
-            <Route path="/posts" exact component={Posts} />
-            <Route path="/posts/:id" component={PostItem} />
-            <Route path="/profiles" component={Profiles} />
+            <Switch>
+              <Route path="/posts/:id" component={PostItem} />
+              <Route path="/profiles" component={Profiles} />
+              <Route path="/posts" component={Posts} />
+              <Route path="/" exact component={Home} />
+              <Route render={() => <h2>Oh oops. 404</h2>} />
+            </Switch>
           </div>
         </BrowserRouter>
       </div>
