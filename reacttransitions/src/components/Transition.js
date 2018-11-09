@@ -24,7 +24,7 @@ class TransitionComp extends Component{
                     { state => <div className={`square square-${state}`}> {`square square-${state}`} </div> }
                 </Transition>
 
-                <div class="showDiv" onClick={this.showDiv.bind(this)}>Show and Hide</div>
+                <div className="showDiv" onClick={this.showDiv.bind(this)}>Show and Hide</div>
             </div>
 
         )
