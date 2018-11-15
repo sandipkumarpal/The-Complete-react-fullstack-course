@@ -1,0 +1,7 @@
+.logo {
+    flex-grow: 1;
+    padding-top: 8px;
+}
+.logo img {
+    max-width: 35px;
+}
