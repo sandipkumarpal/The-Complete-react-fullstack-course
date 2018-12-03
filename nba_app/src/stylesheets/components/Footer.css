@@ -1,0 +1,15 @@
+.footer {
+    background-color: #242424;
+    display: flex;
+    justify-content: content;
+    align-items: center;
+}
+.footer__logo img {
+    width: 35px;
+    padding: 6px;
+}
+.footer__right {
+    flex-grow: 1;
+    color: #878787;
+    font-size: 12px;
+}

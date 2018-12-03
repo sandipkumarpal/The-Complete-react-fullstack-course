@@ -1,0 +1,23 @@
+.header {
+    background-color: #242424;
+    border-bottom: solid 1px #000;
+}
+.header__opt {
+    display: flex;
+}
+.header__logo {
+    flex-grow: 1;
+    padding-top: 6px;
+}
+
+.header__logo img {
+    width: 35px;
+    height: auto;
+}
+.header__bars {
+    padding: 6px;
+    cursor: pointer;
+}
+.header__bars .fa {
+    color: #dfdfdf;
+}

@@ -1,0 +1,12 @@
+.article-Wrapper__postData {
+    border: 1px solid #c5c5c5;
+    border-bottom: none;
+    background-color: #fff;
+    margin: 5px 5px 0;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 300;
+}
+.article-Wrapper__postData span {
+    font-weight: 500;
+}

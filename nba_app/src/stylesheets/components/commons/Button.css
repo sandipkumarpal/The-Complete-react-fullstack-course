@@ -1,0 +1,25 @@
+.button {
+    cursor: pointer;
+    font-size: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 500;
+    border: none;
+    padding: 10px 15px;
+}
+.button--blue {
+    background-color: #2196f3;
+    border-bottom: 1px solid #d7d7d7;
+    color: #eee;
+}
+.button--block {
+    display: block;
+    padding: 9px;
+}
+button.button--block {
+    width: 100%;
+}
+.button:focus {
+    outline: none;
+}

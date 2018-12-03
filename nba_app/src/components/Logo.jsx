@@ -1,11 +1,10 @@
 import React from 'react';
-import '../css/components/Logo.css';
 import { Link } from 'react-router-dom';
 
 function Logo(props) {
     return (
-        <Link to="/" className="logo">
-            <img alt="NBA Logo" src="/images/nba_logo.png" />
+        <Link to={props.link} className={props.className}>
+            <img src={props.src} alt={props.title} />
         </Link>
     );
 }
