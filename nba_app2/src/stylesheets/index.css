@@ -1,0 +1,21 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css';
+@import './containers/layout.css';
+@import './containers/Header.css';
+@import './components/Footer.css';
+@import './components/SideNavItems.css';
+@import './components/commons/Button.css';
+@import './components/commons/CardInfo.css';
+@import './components/commons/TeamInfo.css';
+@import './components/commons/PostData.css';
+@import './components/VideosListTemplate.css';
+
+@import './containers/News/SliderTemplate.css';
+@import './containers/News/NewsLists.css';
+
+@import './containers/Articles/Articles.css';
+
+@import './containers/Videos/Videos.css';
+@import './containers/Videos/VideoLists.css';

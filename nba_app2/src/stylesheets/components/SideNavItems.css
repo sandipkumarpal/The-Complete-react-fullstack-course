@@ -1,0 +1,16 @@
+.navItems {
+    font-weight: 300;
+    font-size: 13px;
+    color: #bababa;
+    border-top: solid 1px #404040;
+}
+.navItems a {
+    color: inherit;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+.navItems .fa {
+    color: #fff;
+    margin-right: 10px;
+}
