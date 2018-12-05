@@ -1,9 +1,10 @@
 import React from 'react';
-import axios from 'axios';
 import { TransitionGroup, CSSTransition} from 'react-transition-group';
-import { API_URL } from '../../constants/appConstants';
+
 import Button from '../../components/commons/Button';
 import VideosListTemplate from '../../components/VideosListTemplate';
+
+import { firebaseTeams, firebaseVideos, firebaseLooper } from '../../firebase';
 
 class VideoLists extends React.Component {
     constructor(props) {
@@ -28,21 +29,22 @@ class VideoLists extends React.Component {
 
     requestData(start, end) {
         if(this.state.teams.length < 1) {
-            axios.get(`${API_URL}/teams`)
-                .then(response => {
-                    this.setState(() =>({
-                        teams: response.data
-                    }))
-                });
+            firebaseTeams.once('value')
+            .then(snapshot => {
+                const teams = firebaseLooper(snapshot);
+                this.setState({ teams });
+            });
         }
-        axios.get(`${API_URL}/videos?_start=${start}&_end=${end}`)
-        .then(response => {
-            this.setState(() => ({
-                videos: [...this.state.videos, ...response.data],
-                start,
-                end
-            }));
-        });
+
+        firebaseVideos.orderByChild('id').startAt(start).endAt(end).once('value')
+            .then(snapshot => {
+                const videos = firebaseLooper(snapshot);
+                this.setState({
+                    videos: [...this.state.videos, ...videos],
+                    start,
+                    end
+                });
+            });
     }
 
     renderVideo() {
