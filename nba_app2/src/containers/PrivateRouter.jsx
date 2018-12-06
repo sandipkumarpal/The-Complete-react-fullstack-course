@@ -15,8 +15,8 @@ function PrivateRouter() {
                 <Route path="/" exact component={Home}/>
                 <Route path="/news" component={News}/>
                 <Route path="/articles/:id" component={Articles}/>
-                <Route path="/videos/:id" component={VideosSingle}/>
-                <Route path="/videos" component={Videos}/>
+                <Route path="/videos" exact component={Videos}/>
+                <Route path="/videos/:id" exact component={VideosSingle}/>
             </Switch>
         </Layout>
     );

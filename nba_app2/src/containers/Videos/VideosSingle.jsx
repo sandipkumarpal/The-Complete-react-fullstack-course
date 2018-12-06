@@ -1,8 +1,9 @@
 import React from 'react';
-import axios from 'axios';
-import { API_URL } from '../../constants/appConstants';
+
 import VideoHeader from './VideoHeader';
 import VideoRelated from './VideoRelated';
+
+import { firebaseDB, firebaseTeams, firebaseVideos, firebaseLooper } from '../../firebase';
 
 class VideosSingle extends React.Component {
     constructor(props) {
@@ -17,38 +18,38 @@ class VideosSingle extends React.Component {
     }
 
     componentWillMount() {
-        axios.get(`${API_URL}/videos?id=${this.props.match.params.id}`)
-            .then(respose => {
-                let video = respose.data[0];
-                axios.get(`${API_URL}/teams?id=${video.team}`)
-                .then(response => {
-                    this.setState(() => ({
+        firebaseDB.ref(`videos/${this.props.match.params.id}`).once('value')
+            .then(snapshot => {
+                let video = snapshot.val();
+                firebaseTeams.orderByChild('teamId').equalTo(video.team).once('value')
+                .then(snapshot => {
+                    const team = firebaseLooper(snapshot);
+                    this.setState({
                         video,
-                        team : response.data,
-                    }))
-                this.getRelated();
+                        team
+                    });
+                    this.getRelated();
                 })
             });
     }
 
     getRelated() {
-        console.log(this.state)
-        axios.get(`${API_URL}/teams`)
-            .then(response => {
-                let teams = response.data;
+        firebaseTeams.once('value')
+            .then(snapshot => {
+                const teams = firebaseLooper(snapshot);
 
-                axios.get(`${API_URL}/videos?q=${this.state.team[0].city}&_limit=3`)
-                    .then(response => {
-                        this.setState(() => ({
-                            teams,
-                            related: response.data
-                        }))
-                    });
+                firebaseVideos.orderByChild('team')
+                .equalTo(this.state.video.team).limitToFirst(3).once('value')
+                .then(snapshot => {
+                    const related = firebaseLooper(snapshot);
+                    this.setState({ teams, related });
+                })
             })
     }
 
     render() {
         const {video, team, related} = this.state;
+        console.log(video)
         return (
             <div className="video-Wrapper">
                 <VideoHeader
