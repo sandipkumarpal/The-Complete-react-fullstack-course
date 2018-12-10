@@ -7,16 +7,18 @@ import Articles from './../containers/Articles';
 import VideosSingle from './../containers/Videos/VideosSingle';
 import Videos from './../containers/Videos';
 import News from './../containers/News';
+import SignIn from './../containers/SignIn';
 
 function PrivateRouter() {
     return (
         <Layout>
             <Switch>
                 <Route path="/" exact component={Home}/>
-                <Route path="/news" component={News}/>
-                <Route path="/articles/:id" component={Articles}/>
-                <Route path="/videos" component={Videos}/>
-                <Route path="/videos/:id" component={VideosSingle}/>
+                <Route path="/news" exact component={News}/>
+                <Route path="/articles/:id" exact component={Articles}/>
+                <Route path="/videos" exact component={Videos}/>
+                <Route path="/videos/:id" exact component={VideosSingle}/>
+                <Route path="/sign-in" exact component={SignIn}/>
             </Switch>
         </Layout>
     );
