@@ -18,3 +18,14 @@
     font-weight: 300;
     border: solid 1px #d2d2d2;
 }
+.logContainer button {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    font-size: 13px;
+    padding: 10px;
+    color: #fff;
+    margin-top: 10px;
+    background-color: #03a;
+    border: none;
+}

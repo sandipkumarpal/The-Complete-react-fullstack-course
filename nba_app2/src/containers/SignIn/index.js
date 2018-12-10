@@ -45,6 +45,8 @@ class SignIn extends React.Component {
         }
         this.updateForm = this.updateForm.bind(this);
         this.valiDate = this.valiDate.bind(this);
+        this.submitButton = this.submitButton.bind(this);
+        this.submitForm = this.submitForm.bind(this);
     }
 
     updateForm(element) {
@@ -89,10 +91,49 @@ class SignIn extends React.Component {
         return error;
     }
 
+    submitForm(event, type) {
+        event.preventDefault();
+        if(type !== null) {
+            let dataToSubmit = {};
+            let formIsValid = true;
+
+            for (const key in this.state.formData) {
+                dataToSubmit[key] = this.state.formData[key].value;
+            }
+            for (const key in this.state.formData) {
+                formIsValid = this.state.formData[key].valid && formIsValid;
+            }
+            if (formIsValid) {
+                console.log(dataToSubmit);
+                this.setState({
+                    loading: true,
+                    registerError: ''
+                });
+                if (type) {
+                    console.log('[Login]')
+                } else {
+                    console.log('[Register]')
+                }
+            }
+        }
+    }
+
+    submitButton() {
+        let submitButtons = null;
+        this.state.loading ?
+            submitButtons = 'loading...'
+        :
+            submitButtons = <div>
+                <button onClick={(event) => this.submitForm(event, false)}>Register Now</button>
+                <button onClick={(event) => this.submitForm(event, true)}>Log In</button>
+            </div>
+        return submitButtons;
+    }
+
     render() {
         return (
             <div className="logContainer">
-                <form>
+                <form onSubmit={(event) => this.submitForm(event, null)}>
                     <h2>Register / Login</h2>
                     <FormField 
                         id={'email'}
@@ -104,6 +145,7 @@ class SignIn extends React.Component {
                         formData={this.state.formData.password}
                         change={(e) => this.updateForm(e)}
                     />
+                    {this.submitButton()}
                 </form>
             </div>
         );
