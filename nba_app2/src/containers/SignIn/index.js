@@ -1,6 +1,7 @@
 import React from 'react';
 
 import FormField from '../../components/commons/FormField';
+import { firebase } from '../../firebase';
 
 class SignIn extends React.Component {
     constructor(props) {
@@ -47,6 +48,7 @@ class SignIn extends React.Component {
         this.valiDate = this.valiDate.bind(this);
         this.submitButton = this.submitButton.bind(this);
         this.submitForm = this.submitForm.bind(this);
+        this.showError = this.showError.bind(this);
     }
 
     updateForm(element) {
@@ -110,9 +112,35 @@ class SignIn extends React.Component {
                     registerError: ''
                 });
                 if (type) {
-                    console.log('[Login]')
+                    console.log('[Login]');
+                    firebase.auth()
+                    .signInWithEmailAndPassword(
+                        dataToSubmit.email, 
+                        dataToSubmit.password
+                    ).then(() => {
+                        this.props.history.push('/');
+
+                    }).catch(error => {
+                        this.setState({
+                            loading: false,
+                            registerError: error.message
+                        });
+                    });
                 } else {
-                    console.log('[Register]')
+                    console.log('[Register]');
+                    firebase.auth()
+                    .createUserWithEmailAndPassword(
+                        dataToSubmit.email, 
+                        dataToSubmit.password
+                    ).then(() => {
+                        this.props.history.push('/');
+
+                    }).catch(error => {
+                        this.setState({
+                            loading: false,
+                            registerError: error.message
+                        });
+                    });
                 }
             }
         }
@@ -128,6 +156,12 @@ class SignIn extends React.Component {
                 <button onClick={(event) => this.submitForm(event, true)}>Log In</button>
             </div>
         return submitButtons;
+    }
+
+    showError() {
+        return this.state.registerError !== '' ?
+        <div className="error">{this.state.registerError}</div>
+        : '';
     }
 
     render() {
@@ -146,6 +180,7 @@ class SignIn extends React.Component {
                         change={(e) => this.updateForm(e)}
                     />
                     {this.submitButton()}
+                    {this.showError()}
                 </form>
             </div>
         );

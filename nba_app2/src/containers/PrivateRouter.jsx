@@ -9,7 +9,8 @@ import Videos from './../containers/Videos';
 import News from './../containers/News';
 import SignIn from './../containers/SignIn';
 
-function PrivateRouter() {
+function PrivateRouter(props) {
+    console.log(props)
     return (
         <Layout>
             <Switch>

@@ -3,10 +3,10 @@ import { BrowserRouter } from 'react-router-dom';
 
 import PrivateRouter from './PrivateRouter';
 
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
-      <PrivateRouter/>
+      <PrivateRouter {...props} />
     </BrowserRouter>
   );
 }
