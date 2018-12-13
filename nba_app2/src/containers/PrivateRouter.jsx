@@ -10,9 +10,8 @@ import News from './../containers/News';
 import SignIn from './../containers/SignIn';
 
 function PrivateRouter(props) {
-    console.log(props)
     return (
-        <Layout>
+        <Layout user={props.user}>
             <Switch>
                 <Route path="/" exact component={Home}/>
                 <Route path="/news" exact component={News}/>
