@@ -8,6 +8,7 @@ import VideosSingle from './../containers/Videos/VideosSingle';
 import Videos from './../containers/Videos';
 import News from './../containers/News';
 import SignIn from './../containers/SignIn';
+import DashBoard from './../containers/DashBoard';
 
 function PrivateRouter(props) {
     return (
@@ -19,6 +20,7 @@ function PrivateRouter(props) {
                 <Route path="/videos" exact component={Videos}/>
                 <Route path="/videos/:id" exact component={VideosSingle}/>
                 <Route path="/sign-in" exact component={SignIn}/>
+                <Route path="/dashboard" exact component={DashBoard}/>
             </Switch>
         </Layout>
     );
