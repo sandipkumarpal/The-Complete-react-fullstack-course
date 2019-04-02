@@ -29,3 +29,7 @@
     background-color: #03a;
     border: none;
 }
+.myEditor-editor {
+    background-color: #fff;
+    padding: 10px;
+}
