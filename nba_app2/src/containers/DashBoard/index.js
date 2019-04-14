@@ -1,14 +1,12 @@
 import React from 'react';
 import { Editor } from 'react-draft-wysiwyg';
-import {
-    EditorState,
-    convertFromRaw,
-    convertToRaw
-} from 'draft-js';
-// import { stateToHTML } from 'draft-js-export-html';
-import {stateToHTML} from 'draft-js-export-html';
+import { EditorState } from 'draft-js';
+
+import { stateToHTML } from 'draft-js-export-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import FormField from '../../components/commons/FormField';
+
+import { firebaseTeams } from '../../firebase';
 
 class DashBoard extends React.Component {
     constructor(props) {
@@ -48,7 +46,27 @@ class DashBoard extends React.Component {
                     valid: false,
                     touched: false,
                     validationMessage: ''
-                }
+                },
+                body: {
+                    element: 'texteditor',
+                    value: '',
+                    valid: true,
+
+                },
+                teams: {
+                    element: 'select',
+                    value: '',
+                    config: {
+                        name: 'teams_input',
+                        options: []
+                    },
+                    validation: {
+                        required: true
+                    },
+                    valid: false,
+                    touched: false,
+                    validationMessage: ''
+                },
             }
         }
         this.submitForm = this.submitForm.bind(this);
@@ -79,16 +97,22 @@ class DashBoard extends React.Component {
             })
         }
         console.log(dataToSubmit);
+        
     }
 
-    updateForm(element) {
+    updateForm(element, content = '') {
         const newFormData = {
             ...this.state.formData
         }
         const newElement = {
             ...newFormData[element.id]
         }
-        newElement.value = element.event.target.value;
+        if (content === '') {
+            newElement.value = element.event.target.value;
+        } else {
+            newElement.value = content;
+        }
+
         if(element.blur) {
             let validData = this.validate(newElement);
             newElement.valid = validData[0];
@@ -128,15 +152,31 @@ class DashBoard extends React.Component {
     }
 
     onEditorStateChange(editorState) {
-
         let contentState = editorState.getCurrentContent();
-        let rawState = convertToRaw(contentState);
-        let html = stateToHTML(rawState);
-        console.log(html);
+        let html = stateToHTML(contentState);
+        this.updateForm({ id:'body'}, html)
 
         this.setState({
-            editorState,
-            edit: false
+            editorState
+        });
+    }
+
+    componentDidMount() {
+        this.loadItems();
+    }
+    loadItems = () => {
+        firebaseTeams.once('value')
+        .then((snapshot) => {
+            let teams = [];
+            snapshot.forEach((childSnapshot) => {
+                teams.push({
+                    id: childSnapshot.val().teamId,
+                    name: childSnapshot.val().city
+                });
+            });
+
+            const newFormData = { ...this.state.formData };
+            
         });
     }
     render() {
@@ -155,11 +195,15 @@ class DashBoard extends React.Component {
                         change={(e) => this.updateForm(e)}
                     />
                     <Editor 
-                        readOnly={this.state.edit}
                         editorState={this.state.editorState}
                         wrapperClassName="myEditor-wrapper"
                         editorClassName="myEditor-editor"
                         onEditorStateChange={this.onEditorStateChange}
+                    />
+                    <FormField 
+                        id={'teams'}
+                        formData={this.state.formData.teams}
+                        change={(e) => this.updateForm(e)}
                     />
                     {this.submitButton()}
                     {this.showError()}
